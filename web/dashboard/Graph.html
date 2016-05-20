@@ -9,6 +9,12 @@
         stroke: #999;
         stroke-opacity: .6;
     }
+	body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+        width: 500px;
+		height: 500px;
+    }
 </style>
 <body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -25,6 +31,7 @@
             .attr("height", height);
 
     d3.json("http://91.151.187.30:1216/viz/getJson?type=0", function(error, graph) {
+	//d3.json("http://91.151.187.30:1216/VisualizationLibrary/getJson?nodes=30&type=0", function(error, graph) {
 
         if (error) throw error;
         force

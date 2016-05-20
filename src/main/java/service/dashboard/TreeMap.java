@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class TreeMap extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher view = request.getRequestDispatcher("dashboard/Matrix.html");
+        RequestDispatcher view = request.getRequestDispatcher("dashboard/TreeMap.html");
         view.forward(request, response);
     }
 }

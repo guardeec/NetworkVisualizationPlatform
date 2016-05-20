@@ -62,8 +62,9 @@ public class UploadXML extends HttpServlet {
             out.write(file);
             out.close();
         }
+        System.out.printf("d");
         boolean success = xmlStorage.setMaxPatrolLog(xmlFile);
-
+        System.out.println("d");
         if (success){
             RequestDispatcher view = req.getRequestDispatcher("upload/UploadXML.html");
             view.forward(req, resp);

@@ -53,7 +53,7 @@
             columnTexts
             ;
 
-    d3.json("http://localhost:8080/getJson?type=2&up=true&metric=0&stroke=true", function(d) {
+    d3.json("http://91.151.187.30:1216/viz/getJson?type=2&up=true&metric=0&stroke=true", function(d) {
 
         names = d.nodes;
         nodesNumber = d.nodes.length;
@@ -172,7 +172,7 @@
         var metric=d3.select("#Metric").property("value");
         var stroke=d3.select("#Line").property("value");
 
-        d3.json("http://localhost:8080/getJson?type=2&up="+up+"&metric="+metric+"&stroke="+stroke, function(d) {
+        d3.json("http://91.151.187.30:1216/viz/getJson?type=2&up="+up+"&metric="+metric+"&stroke="+stroke, function(d) {
             animateMatrix(d);
         });
     }

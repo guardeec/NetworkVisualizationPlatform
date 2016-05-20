@@ -3,39 +3,23 @@
 <head>
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 </head>
+<style>
+
+   
+		body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        width: 500px;
+		height: 500px;
+    }
+
+    </style>
 <body>
 
-<div style="text-align: center; ">
-    <div id="1" class="wrapper-dropdown-1" style="display: inline">
-        <select id="Order">
-            <option value="true">Up</option>
-            <option value="false">Down</option>
-        </select>
-    </div>
-    <div id="2" class="wrapper-dropdown-1" style="display: inline">
-        <select id="Metric">
-            <option value="0">Name</option>
-            <option value="1">Opacity</option>
-            <option value="2">Number</option>
-        </select>
-    </div>
-    <div id="3" class="wrapper-dropdown-1" style="display: inline">
-        <select id="Line">
-            <option value="true">Row</option>
-            <option value="false">Column</option>
-        </select>
-    </div>
-    <div id="option" style="display: inline">
-        <input name="updateButton"
-               type="button"
-               value="Sort"
-               onclick="sortMatrix()" />
-    </div>
-</div>
 
 
 
-<div class="svgContainer" style="text-align:center;">
+
+<div class="svgContainer">
 </div>
 
 <script type="text/javascript">
@@ -54,12 +38,12 @@
             ;
 
     d3.json("http://91.151.187.30:1216/viz/getJson?type=2&up=true&metric=0&stroke=true", function(d) {
-
+//d3.json("http://91.151.187.30:1216/VisualizationLibrary/getJson?type=4&up=true&metric=0&stroke=true", function(d) {
         names = d.nodes;
         nodesNumber = d.nodes.length;
         linksNumber = d.links.length;
-        matrixWidth = 500-nodesNumber+1,
-                matrixHeight = 500-nodesNumber+1,
+        matrixWidth = 500,
+                matrixHeight = 500,
                 paddingLines = 1,
                 paddingMatrix =  /*d3.max(names, function(d){
                             return d.name.length;

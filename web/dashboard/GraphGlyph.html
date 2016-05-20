@@ -14,6 +14,12 @@
             stroke: #808080;
             stroke-opacity: .6;
         }
+		body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+        width: 500px;
+		height: 500px;
+    }
 
     </style>
 </head>
@@ -39,7 +45,7 @@
 
 
     d3.json("http://91.151.187.30:1216/viz/getJson?type=1", function(error, graph) {
-
+//d3.json("http://91.151.187.30:1216/VisualizationLibrary/getJson?nodes=30&type=2", function(error, graph) {
         if (error) throw error;
         force
                 .nodes(graph.nodes)

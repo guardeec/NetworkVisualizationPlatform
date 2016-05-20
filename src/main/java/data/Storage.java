@@ -133,11 +133,12 @@ public class Storage implements RawDataImpl, GraphicalDataImpl {
         try {
             this.maxPatrolData = this.maxPatrolParser.getMaxPatrolData(maxPatrolLog);
         } catch (IOException e) {
+            e.printStackTrace();
             this.maxPatrolData = null;
             return false;
         }
         this.maxPatrolFile = maxPatrolLog;
-        //System.out.println(this.maxPatrolData.getDataAsString());
+        System.out.println(this.maxPatrolData.getDataAsString());
         return true;
     }
 
