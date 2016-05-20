@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="csvParser" class="parsers.csv.CsvParser"/>
+    <bean id="maxpatrolParser" class="parsers.maxpatrol.MaxpatrolParser"/>
+    <bean id="networkParser" class="parsers.innerstructure.NetworkParser"/>
+    <bean id="graphParser" class="parsers.graphicalmodels.GraphParser"/>
+    <bean id="glyphParser" class="parsers.graphicalmodels.GlyphParser"/>
+    <bean id="matrixParser" class="parsers.graphicalmodels.MatrixParser"/>
+    <bean id="treeMapParser" class="parsers.graphicalmodels.TreeMapParser"/>
+
+    <bean id="store" class="data.Storage" scope="singleton">
+        <constructor-arg ref="maxpatrolParser"/>
+        <constructor-arg ref="csvParser" />
+        <constructor-arg ref="networkParser" />
+        <constructor-arg ref="graphParser" />
+        <constructor-arg ref="glyphParser"/>
+        <constructor-arg ref="matrixParser"/>
+        <constructor-arg ref="treeMapParser"/>
+    </bean>
+
+
+
+
+
+
+
+</beans>
