@@ -43,7 +43,7 @@
             .style("left", margin.left + "px")
             .style("top", margin.top + "px");
 
-    d3.json("http://91.151.187.30:1216/viz/getJson?type=3", function(error, root) {
+    d3.json("http://localhost:8080/getJson?type=3", function(error, root) {
 	//d3.json("http://91.151.187.30:1216/VisualizationLibrary/getJson?type=5&nodes=50", function(error, root) {
         if (error) throw error;
 

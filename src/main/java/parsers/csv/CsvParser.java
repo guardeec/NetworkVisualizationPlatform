@@ -1,6 +1,7 @@
 package parsers.csv;
 
 import au.com.bytecode.opencsv.CSVReader;
+import com.google.gson.Gson;
 import data.rawdata.csvdata.CsvData;
 import data.rawdata.csvdata.CsvPattern;
 import data.rawdata.csvdata.Host;
@@ -22,6 +23,8 @@ public class CsvParser {
         String [] nextLine;
         List<Link> links = new LinkedList<>();
         List<Host> hosts = new LinkedList<>();
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(pattern));
         while ((nextLine = reader.readNext()) != null){
             //в первой части линки
             //если там что то есть, то читаем линки
@@ -75,6 +78,7 @@ public class CsvParser {
         }
         csvData.setLinks(links);
         csvData.setHosts(hosts);
+        System.out.println(gson.toJson(csvData));
         return csvData;
     }
 }

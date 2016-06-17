@@ -14,6 +14,7 @@ import parsers.graphicalmodels.GraphParser;
 import parsers.graphicalmodels.MatrixParser;
 import parsers.graphicalmodels.TreeMapParser;
 import parsers.innerstructure.NetworkParser;
+import parsers.innerstructure.NetworkToXMLParser;
 import parsers.maxpatrol.MaxpatrolParser;
 
 import java.io.File;
@@ -87,7 +88,7 @@ public class Storage implements RawDataImpl, GraphicalDataImpl {
     }
 
     @Override
-    public boolean setCsv(File csv, String patternName) {
+    public boolean setCsv (File csv, String patternName) {
         //csvdata может быть загружен только после maxPatrolLog
         //возвращаем ошибку если maxPatrolLog не загружен
         if (maxPatrolData==null){
@@ -120,7 +121,12 @@ public class Storage implements RawDataImpl, GraphicalDataImpl {
         this.paramsGlyph = glyphParser.parseToGlyph(this.network);
         this.paramsMatrix = matrixParser.parseToMatrix(this.network);
         this.paramsTreeMap = treeMapParser.parseToMap(this.network);
-        System.out.println(this.network.getNetworkAsString());
+
+        NetworkToXMLParser networkToXMLParser = new NetworkToXMLParser();
+
+        System.out.println("!!!");
+        System.out.println(networkToXMLParser.parse(this.network));
+
         return true;
     }
 

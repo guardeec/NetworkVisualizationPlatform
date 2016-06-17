@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+    <title>Визуализация & Co</title>
+
+	<style>
+
+		iframe { margin: 0px; padding: 0px; }
+		div.center { margin: auto; width: 1024px; overflow: auto; border: 0px solid #f00;  }
+		
+		ul
+		{
+			padding: 0px;
+			margin: 0px;
+			clear: both;
+			list-style: none;
+			list-style-position: inside;
+			overflow: auto;
+		}
+		
+		ul li
+		{
+			float: left;
+			overflow: auto;
+			border: 0px solid;
+			border-radius: 2px; 
+			-webkit-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
+			-moz-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
+			box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.5);
+		}
+			
+		ul.first { padding-left: 2px; padding-bottom: 5px; }
+		ul.last { padding-left: 2px; padding-top: 5px; padding-bottom: 4px; }
+		
+		ul li:first-child { margin-right: 9px; }
+		ul li:last-child { margin-left: 9px; }
+		
+		div.title { background: #D8D8D8; color: #525252; font-weight: bold; overflow: auto; padding-left: 10px; line-height: 30px; }
+	</style>
+
+</head>
+
+<body>
+	<div class='center'>
+		<ul class='first'>
+		 <li><div class='title' onclick="location.href='http://localhost:8080/test/graph.html';"> Graph </div>
+		 <iframe src="http://localhost:8080/dashboardGraph" width="500" height="470" frameBorder="0" scrolling="no"></iframe> </li>
+		 <li><div class='title' onclick="location.href='http://localhost:8080/test/treeMap.html';"> TreeMap </div>
+		 <iframe src="http://localhost:8080/dashboardTreeMap" width="500" height="470" frameBorder="0" scrolling="no"></iframe> </li>
+		</ul>
+		
+		<ul class='last'>
+		 <li><div class='title' onclick="location.href='http://localhost:8080/test/matrix.html';"> Matrix </div>
+		 <iframe src="http://localhost:8080/dashboardMatrix" width="500" height="470" frameBorder="0" scrolling="no"></iframe> </li>
+		 <li><div class='title' onclick="location.href='http://localhost:8080/test/glyph.html';"> Glyph </div>
+		 <iframe src="http://localhost:8080/dashboardGlyph" width="500" height="470" frameBorder="0" scrolling="no"></iframe> </li>
+		</ul>
+	</div>
+</body>
+</html>

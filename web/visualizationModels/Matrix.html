@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="utf-8">
 <head>
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 <body>
+<script src="saveSvgAsPng.js"></script>
 
 <div style="text-align: center; ">
     <div id="1" class="wrapper-dropdown-1" style="display: inline">
@@ -53,7 +55,7 @@
             columnTexts
             ;
 
-    d3.json("http://91.151.187.30:1216/viz/getJson?type=2&up=true&metric=0&stroke=true", function(d) {
+    d3.json("http://localhost:8080/getJson?type=2&up=true&metric=0&stroke=true", function(d) {
 
         names = d.nodes;
         nodesNumber = d.nodes.length;
@@ -67,7 +69,7 @@
         var svg = d3.select("body").select("div.svgContainer").append("svg")
                 .attr("width", matrixWidth+paddingMatrix)
                 .attr("height", matrixHeight+paddingMatrix)
-
+                .attr("id", "mainSvg");
                 ;
         svg.append("rect")
                 .attr("class", "background")
@@ -172,7 +174,7 @@
         var metric=d3.select("#Metric").property("value");
         var stroke=d3.select("#Line").property("value");
 
-        d3.json("http://91.151.187.30:1216/viz/getJson?type=2&up="+up+"&metric="+metric+"&stroke="+stroke, function(d) {
+        d3.json("http://localhost:8080/getJson?type=2&up="+up+"&metric="+metric+"&stroke="+stroke, function(d) {
             animateMatrix(d);
         });
     }
@@ -211,9 +213,12 @@
 
 
 
-
-
+    function save(){
+        saveSvgAsPng(document.getElementById("mainSvg"),"svg.png");
+    }
 </script>
 
-
-
+<div style="margin-top: 10px; margin-left: 385px;">
+    <button onClick="save()">Скачать PNG</button>
+    <button onclick="location.href = 'http://localhost:8080/downloadXML?type=matrix';" class="float-left submit-button">Скачать XML</button>
+</div>

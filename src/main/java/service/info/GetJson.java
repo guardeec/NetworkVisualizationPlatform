@@ -18,11 +18,8 @@ import java.io.PrintWriter;
 сервлет для отправки сгенерированного json
 впоследствии весь пакет generators будет заменен на модуль импорта данных визуализации
  */
-@WebServlet(name = "GetJson")
+@WebServlet(name = "GetJson", urlPatterns = "/getJson")
 public class GetJson extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*
@@ -39,14 +36,17 @@ public class GetJson extends HttpServlet {
         String json="";
         switch (typeOfVisualisation){
             case 0: {
+                //граф
                 json = graphicalModels.getGraph().getJSON();
                 break;
             }
             case 1: {
+                //глиф
                 json = graphicalModels.getGlyph().getJSON();
                 break;
             }
             case 2: {
+                //матрица
                 json = graphicalModels.getMatrix().getJSON(
                         Boolean.parseBoolean(request.getParameterMap().get("up")[0]),
                         Integer.parseInt(request.getParameterMap().get("metric")[0]),
@@ -55,19 +55,8 @@ public class GetJson extends HttpServlet {
                 break;
             }
             case 3:{
+                //карта Деревьев
                 json = graphicalModels.getTreeMap().getJson();
-                break;
-            }
-            case 4:{
-                //в случае матрицы необходимо получить параметры сортировки
-//                boolean up = Boolean.parseBoolean(request.getParameterMap().get("up")[0]);
-//                int metric = Integer.parseInt(request.getParameterMap().get("metric")[0]);
-//                boolean stroke = Boolean.parseBoolean(request.getParameterMap().get("stroke")[0]);
-//                json = MatrixStore.getInstance().getSortedMatrixFromStore(up, metric, stroke);
-                break;
-            }
-            case 5:{
-                //json = TreeMapGenerator.generateTreeMap(Integer.parseInt(request.getParameterMap().get("nodes")[0]));
                 break;
             }
         }

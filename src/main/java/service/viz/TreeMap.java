@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by Guardeec on 06.02.16.
  */
-@WebServlet(name = "TreeMap")
+@WebServlet(name = "TreeMap", urlPatterns = "/treeMap")
 public class TreeMap extends HttpServlet {
     /*
     Сервлет для отображения карты деревьев

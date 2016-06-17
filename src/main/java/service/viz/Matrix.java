@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by guardeec on 02.02.16.
  */
-@WebServlet(name = "Matrix")
+@WebServlet(name = "Matrix", urlPatterns = "/matrix")
 public class Matrix extends HttpServlet {
     /*
     Сервлет для отображения матрицы

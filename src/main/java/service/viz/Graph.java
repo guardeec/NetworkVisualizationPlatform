@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by guardeec on 19.01.16.
  */
-@WebServlet(name = "Graph")
+@WebServlet(name = "Graph", urlPatterns = "/graph")
 public class Graph extends HttpServlet {
     /*
     Сервлет для отображения неориентированного графа

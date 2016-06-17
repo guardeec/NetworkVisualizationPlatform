@@ -8,13 +8,11 @@
         position: relative;
         width: 960px;
     }
-
     form {
         position: absolute;
         right: 10px;
         top: 10px;
     }
-
     .node {
         border: solid 1px white;
         font: 10px sans-serif;
@@ -29,10 +27,17 @@
     <label><input type="radio" name="mode" value="size" checked> Size</label>
     <label><input type="radio" name="mode" value="count"> Count</label>
 </form>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="saveSvgAsPng.js"></script>
 
-    var margin = {top: 40, right: 10, bottom: 10, left: 10},
+<body>
+    <svg id="mainSvg">
+        <foreignobject class="node">
+            <div id="treeMap"></div>
+        </foreignobject>
+    </svg>
+<script>
+    var margin = {top: 15, right: 10, bottom: 10, left: 10},
             width = 960 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
@@ -41,18 +46,33 @@
     var treemap = d3.layout.treemap()
             .size([width, height])
             .sticky(true)
-            .value(function(d) { return d.size; });
+            .value(function(d) { return d.size; })
+            ;
 
-    var div = d3.select("body").append("div")
+//        var div = d3.select("body").append("div")
+//            .style("position", "relative")
+//            .style("width", (width + margin.left + margin.right) + "px")
+//            .style("height", (height + margin.top + margin.bottom) + "px")
+//            .style("left", margin.left + "px")
+//            .style("top", margin.top + "px")
+           // ;
+    var div = d3.select("div")//.append("div")
             .style("position", "relative")
             .style("width", (width + margin.left + margin.right) + "px")
             .style("height", (height + margin.top + margin.bottom) + "px")
             .style("left", margin.left + "px")
-            .style("top", margin.top + "px");
+            .style("top", margin.top + "px")
+            ;
+    var svg = d3.select("svg")
+            .style("position", "relative")
+            .style("width", (width + margin.left + margin.right) + "px")
+            .style("height", (height + margin.top + margin.bottom) + "px")
+            .style("left", margin.left + "px")
+            .style("top", margin.top + "px")
+    ;
 
-    d3.json("http://91.151.187.30:1216/viz/getJson?type=3", function(error, root) {
+    d3.json("http://localhost:8080/getJson?type=3", function(error, root) {
         if (error) throw error;
-
         var node = div.datum(root).selectAll(".node")
                 .data(treemap.nodes)
                 .enter().append("div")
@@ -60,12 +80,10 @@
                 .call(position)
                 .style("background", function(d) { return d.children ? color(d.name) : null; })
                 .text(function(d) { return d.children ? null : d.name; });
-
         d3.selectAll("input").on("change", function change() {
             var value = this.value === "count"
                     ? function() { return 1; }
                     : function(d) { return d.size; };
-
             node
                     .data(treemap.value(value).nodes)
                     .transition()
@@ -73,12 +91,19 @@
                     .call(position);
         });
     });
-
     function position() {
         this.style("left", function(d) { return d.x + "px"; })
                 .style("top", function(d) { return d.y + "px"; })
                 .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
                 .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
     }
+    function save(){
+        saveSvgAsPng(document.getElementById("mainSvg"),"svg.png");
+    }
 
 </script>
+    <div style="margin-top: 10px; margin-left: 385px;">
+        <button onClick="save()">Скачать PNG</button>
+        <button onclick="location.href = 'http://localhost:8080/downloadXML?type=treeMap';" class="float-left submit-button">Скачать XML</button>
+    </div>
+    </body>

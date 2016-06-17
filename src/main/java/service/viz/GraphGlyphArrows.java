@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by guardeec on 28.01.16.
  */
-@WebServlet(name = "GraphGlyphArrows")
+@WebServlet(name = "GraphGlyphArrows", urlPatterns = "/graphGlyphArrows")
 public class GraphGlyphArrows extends HttpServlet {
     /*
     Сервлет для отображения ориентированного графа с глифами

@@ -44,7 +44,7 @@
 
 
 
-    d3.json("http://91.151.187.30:1216/viz/getJson?type=1", function(error, graph) {
+    d3.json("http://localhost:8080/getJson?type=1", function(error, graph) {
 //d3.json("http://91.151.187.30:1216/VisualizationLibrary/getJson?nodes=30&type=2", function(error, graph) {
         if (error) throw error;
         force

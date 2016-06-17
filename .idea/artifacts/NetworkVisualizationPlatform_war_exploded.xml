@@ -15,7 +15,11 @@
           <element id="library" level="project" name="Maven: net.sf.opencsv:opencsv:2.3" />
           <element id="library" level="project" name="Java EE 6-Java EE 6" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.6.2" />
+          <element id="library" level="project" name="Maven: servlets.com:cos:05Nov2002" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/saveSvgAsPng.js" />
+          <element id="library" level="project" name="Maven: org.json:json:20160212" />
         </element>
+        <element id="directory" name="files" />
       </element>
     </root>
   </artifact>

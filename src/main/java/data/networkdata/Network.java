@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Created by Guardeec on 26.04.16.
  */
+
 public class Network {
     //метрики сети
     private String name;
@@ -24,6 +25,10 @@ public class Network {
         this.description = description;
         this.links = new LinkedList<>();
         this.hosts = new ArrayList<>();
+    }
+
+    public Network(){
+
     }
 
     public List<Link> getLinks() {
@@ -71,4 +76,5 @@ public class Network {
         }
         return net;
     }
+
 }
